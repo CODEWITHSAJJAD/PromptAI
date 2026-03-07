@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { GlowBackground } from '@/components/ui/GlowBackground';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import iconSquare from '@/assests/Prompt AI Social Icon_SQUARE.svg';
 
 const AboutHero = () => {
     return (
@@ -87,9 +89,8 @@ const AboutPromise = () => {
                     <AnimatedSection direction="right">
                         <GlassCard className="aspect-[4/5] md:aspect-[3/4] p-16 flex flex-col justify-center text-center bg-white/60 border-white relative overflow-hidden group">
                             <div className="absolute inset-x-0 top-0 h-2 bg-[#FF3500] scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-                            <div className="space-y-8 relative z-10">
-                                <div className="text-8xl md:text-9xl font-black text-[#FF3500] leading-none tracking-tighter">100%</div>
-                                <div className="text-xl font-black uppercase tracking-[0.3em] text-[#262424]">Impact Focus</div>
+                            <div className="relative z-10 flex items-center justify-center">
+                                <Image src={iconSquare} alt="Prompt AI Square Icon" className="w-48 md:w-64 h-auto" />
                             </div>
                             <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#FF3500]/5 rounded-full blur-3xl" />
                         </GlassCard>

@@ -10,6 +10,7 @@ export default function AboutPage() {
             <AboutPillars />
             <Founders />
             <AboutPartners />
+            {/* hello */}
         </>
     );
 }

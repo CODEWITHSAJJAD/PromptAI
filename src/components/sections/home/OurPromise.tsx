@@ -35,14 +35,15 @@ const OurPromise = () => {
                                     </p>
                                 </div>
                                 <div className="relative group/video">
-                                    <div className="aspect-video bg-[#262424] rounded-[2rem] overflow-hidden shadow-2xl flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-700">
-                                        {/* Video Placeholder with Play Button UI */}
-                                        <div className="w-20 h-20 bg-[#FF3500] rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
-                                            <div className="absolute inset-0 bg-white/20 scale-0 group-hover/video:scale-150 transition-transform duration-700 rounded-full" />
-                                            <svg className="w-8 h-8 text-white relative z-10 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M8 5v14l11-7z" />
-                                            </svg>
-                                        </div>
+                                    <div className="aspect-video bg-[#262424] rounded-[2rem] overflow-hidden shadow-2xl flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-700 relative">
+                                        <iframe
+                                            className="absolute inset-0 w-full h-full"
+                                            src="https://www.youtube.com/embed/3m3OV0urOkg?si=0ma_9_7CQjfNbQXp"
+                                            title="YouTube video player"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowFullScreen
+                                        ></iframe>
                                     </div>
                                     {/* Decorative element */}
                                     <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#FF3500]/10 rounded-full blur-3xl" />

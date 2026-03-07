@@ -1,33 +1,43 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+
+import img1 from '@/assests/PromptAI_WebsiteImage-300x169.webp';
+import img2 from '@/assests/PromptAI_WebsiteImage2-300x169.webp';
+import img3 from '@/assests/PromptAI_WebsiteImage5-300x169.webp';
+import img4 from '@/assests/PromptAI_WebsiteImageGETREADYFORAI-300x169.webp';
 
 const articles = [
     {
         category: "Strategy",
         title: "AI adoption strategies for enterprise organisations",
         date: "March 2024",
-        readTime: "5 min read"
+        readTime: "5 min read",
+        image: img1
     },
     {
         category: "Science",
         title: "Behavioural science and the human side of technology",
         date: "Feb 2024",
-        readTime: "8 min read"
+        readTime: "8 min read",
+        image: img2
     },
     {
         category: "Future",
         title: "The future of workplace AI: Beyond the hype",
         date: "Jan 2024",
-        readTime: "6 min read"
+        readTime: "6 min read",
+        image: img3
     },
     {
         category: "Governance",
         title: "AI governance for organisations: A structured approach",
         date: "Dec 2023",
-        readTime: "10 min read"
+        readTime: "10 min read",
+        image: img4
     }
 ];
 
@@ -68,6 +78,7 @@ const InsightsGrid = () => {
                         <AnimatedSection key={index} delay={index * 0.1}>
                             <div className="group cursor-pointer space-y-10">
                                 <div className="aspect-[16/10] bg-[#FFDCD9]/20 rounded-[3.5rem] overflow-hidden relative border border-black/5">
+                                    <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                                     <div className="absolute inset-0 bg-gradient-to-br from-[#FF3500]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                     <div className="absolute top-10 left-10">
                                         <span className="bg-[#262424] text-white text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-full">

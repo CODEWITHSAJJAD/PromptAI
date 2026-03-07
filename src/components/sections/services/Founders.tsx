@@ -1,20 +1,25 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import tarynImage from '@/assests/Taryn Nixon.png';
+import babakImage from '@/assests/Babak Daemi.png';
 
 const founders = [
     {
         name: "Taryn Nixon",
         role: "AI Adoption Lead",
-        bio: "AI Adoption Lead with 15 years of experience in change management and digital transformation across global enterprises."
+        bio: "AI Adoption Lead with 15 years of experience in change management and digital transformation across global enterprises.",
+        image: tarynImage
     },
     {
         name: "Babak Daemi",
         role: "Strategic Lead",
-        bio: "Marketing and behavioural economics specialist with over 20 years of experience in strategic communication."
+        bio: "Marketing and behavioural economics specialist with over 20 years of experience in change management and digital transformation.",
+        image: babakImage
     }
 ];
 
@@ -31,8 +36,14 @@ const Founders = () => {
                     {founders.map((founder, index) => (
                         <AnimatedSection key={index} delay={index * 0.2}>
                             <GlassCard className="group flex flex-col p-12 md:p-16 gap-12 border-black/5 bg-[#FFDCD9]/10 items-center md:items-start text-center md:text-left transition-all duration-700">
-                                <div className="w-full aspect-[4/5] bg-[#262424]/5 rounded-[3rem] overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-700 grayscale group-hover:grayscale-0">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#262424]/40 to-transparent" />
+                                <div className="w-full aspect-[4/5] bg-[#262424]/5 rounded-[3rem] overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-700">
+                                    <Image
+                                        src={founder.image}
+                                        alt={founder.name}
+                                        fill
+                                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#262424]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                     <div className="absolute bottom-8 left-8 right-8">
                                         <div className="w-full h-1 bg-[#FF3500] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                                     </div>
