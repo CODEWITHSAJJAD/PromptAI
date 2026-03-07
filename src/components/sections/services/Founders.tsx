@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
-import tarynImage from '@/assests/Taryn Nixon.png';
-import babakImage from '@/assests/Babak Daemi.png';
+import tarynImage from '@/assets/Taryn Nixon.png';
+import babakImage from '@/assets/Babak Daemi.png';
 
 const founders = [
     {

@@ -7,7 +7,7 @@ import { Container } from '@/components/ui/Container';
 import { GlowBackground } from '@/components/ui/GlowBackground';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
-import iconSquare from '@/assests/Prompt AI Social Icon_SQUARE.svg';
+import iconSquare from '@/assets/Prompt AI Social Icon_SQUARE.svg';
 
 const AboutHero = () => {
     return (

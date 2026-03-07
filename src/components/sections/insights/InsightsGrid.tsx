@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
-import img1 from '@/assests/PromptAI_WebsiteImage-300x169.webp';
-import img2 from '@/assests/PromptAI_WebsiteImage2-300x169.webp';
-import img3 from '@/assests/PromptAI_WebsiteImage5-300x169.webp';
-import img4 from '@/assests/PromptAI_WebsiteImageGETREADYFORAI-300x169.webp';
+import img1 from '@/assets/PromptAI_WebsiteImage-300x169.webp';
+import img2 from '@/assets/PromptAI_WebsiteImage2-300x169.webp';
+import img3 from '@/assets/PromptAI_WebsiteImage5-300x169.webp';
+import img4 from '@/assets/PromptAI_WebsiteImageGETREADYFORAI-300x169.webp';
 
 const articles = [
     {

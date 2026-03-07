@@ -9,17 +9,17 @@ import { cn } from "@/lib/utils";
 const safiro = localFont({
   src: [
     {
-      path: "../assests/Safiro-Medium.otf",
+      path: "../assets/Safiro-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../assests/Safiro-SemiBold.otf",
+      path: "../assets/Safiro-SemiBold.otf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../assests/Safiro-Bold.otf",
+      path: "../assets/Safiro-Bold.otf",
       weight: "700",
       style: "normal",
     },

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
-import logo from '@/assests/Prompt AI Logo_Primary Orange_RGB.svg';
+import logo from '@/assets/Prompt AI Logo_Primary Orange_RGB.svg';
 
 const navLinks = [
     { name: 'Home', href: '/' },
