@@ -4,8 +4,15 @@ import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 const OurPromise = () => {
+    const { getContent } = useContent();
+    const promise = getContent('home')?.promise as { title?: string; content?: string } | null;
+    
+    const title = promise?.title || "Working with PromptAI means businesses can support disadvantaged young people in London.";
+    const content = promise?.content || "For every contract longer than 12 months, we hire one young person from an underprivileged background. We train them in AI, marketing and business skills, ensuring your business impact extends beyond technology.";
+
     return (
         <section className="py-24 md:py-48 bg-white overflow-hidden">
             <Container>
@@ -14,7 +21,7 @@ const OurPromise = () => {
                         <div className="text-center space-y-8">
                             <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] font-mono">The Promise</h2>
                             <p className="text-4xl md:text-7xl font-black text-[#262424] leading-[1.1] tracking-tighter">
-                                Working with PromptAI means businesses can support disadvantaged young people in London.
+                                {title}
                             </p>
                         </div>
                     </AnimatedSection>
@@ -28,7 +35,7 @@ const OurPromise = () => {
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                                 <div className="space-y-8 relative z-10">
                                     <p className="text-2xl md:text-3xl font-black text-[#262424] leading-tight tracking-tight">
-                                        For every contract longer than 12 months, we hire one young person from an underprivileged background.
+                                        {content}
                                     </p>
                                     <p className="text-lg text-[#262424]/70 font-medium leading-relaxed">
                                         We train them in AI, marketing and business skills, ensuring your business impact extends beyond technology.

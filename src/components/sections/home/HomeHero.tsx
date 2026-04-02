@@ -5,8 +5,16 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { GlowBackground } from '@/components/ui/GlowBackground';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 const HomeHero = () => {
+    const { getContent } = useContent();
+    const hero = getContent('home')?.hero as { tagline?: string; title?: string; subtitle?: string } | null;
+    
+    const tagline = hero?.tagline || "The Vision";
+    const title = hero?.title || "Helping organisations get ready for AI.";
+    const subtitle = hero?.subtitle || "AI is changing how we work. The organisations that succeed won't just implement AI — they'll teach their people how to use it.";
+
     return (
         <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden bg-[#FFDCD9]/30">
             <GlowBackground />
@@ -16,13 +24,13 @@ const HomeHero = () => {
                     <AnimatedSection direction="right">
                         <div className="space-y-8">
                             <div className="inline-block px-4 py-2 bg-[#FF3500]/10 rounded-full border border-[#FF3500]/20">
-                                <span className="text-[#FF3500] text-xs font-black uppercase tracking-[0.2em]">The Vision</span>
+                                <span className="text-[#FF3500] text-xs font-black uppercase tracking-[0.2em]">{tagline}</span>
                             </div>
                             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-[#262424] leading-[0.85] tracking-tighter">
-                                Helping organisations <br /> get ready for AI.
+                                {title}
                             </h1>
                             <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight max-w-2xl">
-                                AI is changing how we work. The organisations that succeed won’t just implement AI — they’ll teach their people how to use it.
+                                {subtitle}
                             </p>
                             <div className="pt-4">
                                 <motion.button

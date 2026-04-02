@@ -1,47 +1,50 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
-const studies = [
-    {
-        client: "WPP",
-        challenge: "Scaling AI tools across a fragmented global creative network.",
-        solution: "Bespoke AI adoption framework focused on creative workflows and tool governance.",
-        results: "30% increase in productivity for creative operations teams."
-    },
-    {
-        client: "Refinitiv",
-        challenge: "Integrating generative AI into data-heavy analytical environments.",
-        solution: "PROSCI-led change management strategy to shift analyst mindsets.",
-        results: "Successful rollout to over 5,000 analysts with 85% adoption rate."
-    },
-    {
-        client: "StellarUp",
-        challenge: "Developing a roadmap for AI-driven mentorship matching.",
-        solution: "Behavioural science audit to optimize AI-human interactions in the platform.",
-        results: "Improved matching accuracy and user engagement by 40%."
-    }
+const defaultStudies = [
+    { client: "WPP", challenge: "Scaling AI tools across a fragmented global creative network.", solution: "Bespoke AI adoption framework focused on creative workflows and tool governance.", results: "30% increase in productivity for creative operations teams." },
+    { client: "Refinitiv", challenge: "Integrating generative AI into data-heavy analytical environments.", solution: "PROSCI-led change management strategy to shift analyst mindsets.", results: "Successful rollout to over 5,000 analysts with 85% adoption rate." },
+    { client: "StellarUp", challenge: "Developing a roadmap for AI-driven mentorship matching.", solution: "Behavioural science audit to optimize AI-human interactions in the platform.", results: "Improved matching accuracy and user engagement by 40%." }
 ];
 
 const CaseStudiesGrid = () => {
+    const { getContent } = useContent();
+    const cv = getContent('caseStudies') as any;
+    const intro = cv?.intro || {
+        title: "Every organisation approaches AI differently. In this section we share examples of our work with organisations exploring AI adoption.",
+        description: "These case studies highlight the challenges organisations face, the approaches used to introduce AI and the lessons learned along the way. They demonstrate how organisations move from experimentation to practical use across teams."
+    };
+    
+    const studiesData = cv?.studies as Array<{ client: string; challenge?: string; solution?: string; results?: string; description?: string; tags?: string[] }> | null;
+    const studies = studiesData?.map(s => ({
+        client: s.client,
+        challenge: s.challenge || s.description || "The challenge faced...",
+        solution: s.solution || "Solution description",
+        results: s.results || "Key results achieved"
+    })) || defaultStudies;
+
     return (
         <section className="py-24 md:py-48 bg-[#FFDCD9]/20 overflow-hidden">
             <Container>
                 <div className="space-y-16 max-w-4xl mb-24">
                     <AnimatedSection direction="right">
                         <p className="text-2xl md:text-4xl font-black text-[#262424] leading-tight">
-                            Every organisation approaches AI differently. In this section we share examples of our work with organisations exploring AI adoption.
+                            {intro.title}
                         </p>
                         <p className="text-lg text-[#262424]/70 font-medium leading-relaxed mt-8">
-                            These case studies highlight the challenges organisations face, the approaches used to introduce AI and the lessons learned along the way. They demonstrate how organisations move from experimentation to practical use across teams.
+                            {intro.description}
                         </p>
                     </AnimatedSection>
                 </div>
                 <div className="space-y-12">
-                    {studies.map((study, index) => (
+                    {studies.map((study: { client: string; challenge: string; solution: string; results: string }, index: number) => (
                         <AnimatedSection key={index} delay={index * 0.1}>
                             <GlassCard className="p-12 md:p-24 border-black/5 bg-white/80 group">
                                 <div className="absolute top-0 right-0 p-16 opacity-5 pointer-events-none">

@@ -5,8 +5,16 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { GlowBackground } from '@/components/ui/GlowBackground';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 const InsightsHero = () => {
+    const { getContent } = useContent();
+    const hero = getContent('insights')?.hero as { tagline?: string; title?: string; subtitle?: string } | null;
+    
+    const tagline = hero?.tagline || "Latest Insights";
+    const title = hero?.title || "AI Insights";
+    const subtitle = hero?.subtitle || "Understanding the evolving world of AI.";
+
     return (
         <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-[#FFDCD9]/30 overflow-hidden">
             <GlowBackground />
@@ -14,12 +22,12 @@ const InsightsHero = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <AnimatedSection direction="right">
                         <div className="space-y-8">
-                            <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] font-mono">Latest Insights</h2>
+                            <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] font-mono">{tagline}</h2>
                             <h1 className="text-5xl md:text-9xl font-black text-[#262424] leading-[0.85] tracking-tighter mb-8">
-                                AI <br /> Insights
+                                {title}
                             </h1>
                             <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight max-w-xl">
-                                Understanding the evolving world of AI.
+                                {subtitle}
                             </p>
                             <div className="pt-4">
                                 <motion.button

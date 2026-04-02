@@ -3,8 +3,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
+import { useContent } from '@/hooks/useContent';
 
 const CredDeck = () => {
+    const { getContent } = useContent();
+    const credDeckData = getContent('home')?.credDeck as { title?: string; description?: string } | null;
+    const title = credDeckData?.title || "Get a \n Cred Deck";
+    const description = credDeckData?.description || "Use our form to request a pitch deck and learn more about our team, our purpose and our AI adoption methodology.";
+
     return (
         <section className="py-24 md:py-40 bg-[#FFDCD9]">
             <Container>
@@ -15,11 +21,11 @@ const CredDeck = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-black text-[#262424] leading-[0.9] tracking-tighter mb-8">
-                            Get a <br /> Cred Deck
+                        <h2 className="text-4xl md:text-6xl font-black text-[#262424] leading-[0.9] tracking-tighter mb-8 whitespace-pre-line">
+                            {title}
                         </h2>
                         <p className="text-lg md:text-xl text-[#262424]/70 font-medium leading-relaxed max-w-md">
-                            Use our form to request a pitch deck and learn more about our team, our purpose and our AI adoption methodology.
+                            {description}
                         </p>
                         <div className="mt-12">
                             <button className="bg-[#FF3500] text-white px-10 py-5 rounded-full text-sm font-black uppercase tracking-widest hover:brightness-110 transition-all shadow-xl hover:scale-105 active:scale-95">

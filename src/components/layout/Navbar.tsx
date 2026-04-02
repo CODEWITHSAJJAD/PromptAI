@@ -6,18 +6,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import logo from '@/assets/Prompt AI Logo_Primary Orange_RGB.svg';
 
-const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Academy', href: '/academy' },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Insights', href: '/insights' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' }
-];
+interface NavLink {
+    name: string;
+    href: string;
+}
 
-const Navbar = () => {
+const Navbar = ({ links = [] }: { links?: NavLink[] }) => {
     const [isOpen, setIsOpen] = useState(false);
+    
+    // Fallback links if none provided
+    const navLinks = links.length > 0 ? links : [
+        { name: 'Home', href: '/' },
+        { name: 'Services', href: '/services' },
+        { name: 'About', href: '/about' },
+        { name: 'Academy', href: '/academy' },
+        { name: 'Case Studies', href: '/case-studies' },
+        { name: 'Insights', href: '/insights' },
+        { name: 'Contact', href: '/contact' }
+    ];
 
     return (
         <nav className="fixed top-0 left-0 w-full z-50 bg-[#FFDCD9] py-4 md:py-6 border-b border-[#262424]/5">

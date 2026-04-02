@@ -5,8 +5,16 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { GlowBackground } from '@/components/ui/GlowBackground';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 const CaseStudiesHero = () => {
+    const { getContent } = useContent();
+    const hero = getContent('caseStudies')?.hero as { tagline?: string; title?: string; subtitle?: string } | null;
+    
+    const tagline = hero?.tagline || "Case Studies";
+    const title = hero?.title || "Success Stories";
+    const subtitle = hero?.subtitle || "Examples of AI adoption in practice.";
+
     return (
         <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-white overflow-hidden">
             <GlowBackground />
@@ -14,12 +22,12 @@ const CaseStudiesHero = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <AnimatedSection direction="right">
                         <div className="space-y-8">
-                            <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] font-mono">Case Studies</h2>
+                            <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] font-mono">{tagline}</h2>
                             <h1 className="text-5xl md:text-9xl font-black text-[#262424] leading-[0.85] tracking-tighter mb-8">
-                                Success <br /> Stories
+                                {title}
                             </h1>
                             <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight max-w-xl">
-                                Examples of AI adoption in practice.
+                                {subtitle}
                             </p>
                             <div className="pt-4">
                                 <motion.button

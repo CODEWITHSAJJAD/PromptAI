@@ -5,8 +5,15 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 const GetInTouch = () => {
+    const { getContent } = useContent();
+    const getInTouch = getContent('home')?.getInTouch as { title?: string; subtitle?: string } | null;
+    
+    const title = getInTouch?.title || "Get in Touch";
+    const subtitle = getInTouch?.subtitle || "Ready to start your AI journey? Our team is here to help.";
+
     return (
         <section className="py-24 md:py-48 bg-[#FFDCD9]/20 relative overflow-hidden">
             {/* Background glowing elements */}
@@ -19,12 +26,11 @@ const GetInTouch = () => {
                         <div className="space-y-12">
                             <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em]">Let&apos;s Talk</h2>
                             <h3 className="text-5xl md:text-8xl font-black text-[#262424] tracking-tighter leading-none">
-                                Get in <br /> Touch
+                                {title}
                             </h3>
                             <div className="space-y-8 pt-12">
                                 <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight">
-                                    Ready to start your AI journey?
-                                    Our team is here to help.
+                                    {subtitle}
                                 </p>
                                 <div className="space-y-4">
                                     <a href="mailto:hello@promptaiglobal.com" className="block text-2xl font-black text-[#FF3500] hover:underline transition-all">hello@promptaiglobal.com</a>

@@ -4,26 +4,25 @@ import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
-const diffData = [
-    {
-        title: "Extension of your CSR",
-        desc: "We work with charities to help young people from disadvantaged backgrounds gain skills and work opportunities.",
-        icon: "CSR"
-    },
-    {
-        title: "New Approach to Adoption",
-        desc: "We combine PROSCI change management with behavioural economics to drive AI adoption in organisations.",
-        icon: "ADPT"
-    },
-    {
-        title: "Experienced Team",
-        desc: "Our team has delivered transformation projects for major brands including WPP, Howdens, Admiral, Refinitiv and Jaguar Land Rover.",
-        icon: "TEAM"
-    }
+const defaultDiffData = [
+    { title: "Extension of your CSR", desc: "We work with charities to help young people from disadvantaged backgrounds gain skills and work opportunities.", icon: "CSR" },
+    { title: "New Approach to Adoption", desc: "We combine PROSCI change management with behavioural economics to drive AI adoption in organisations.", icon: "ADPT" },
+    { title: "Experienced Team", desc: "Our team has delivered transformation projects for major brands including WPP, Howdens, Admiral, Refinitiv and Jaguar Land Rover.", icon: "TEAM" }
 ];
 
 const WhyDifferent = () => {
+    const { getContent } = useContent();
+    const whyDifferent = getContent('home')?.whyDifferent as { title?: string; items?: Array<{ title: string; description: string }> } | null;
+    
+    const sectionTitle = whyDifferent?.title || "Why We're Different";
+    const items = whyDifferent?.items?.map((item, i) => ({
+        title: item.title,
+        desc: item.description,
+        icon: defaultDiffData[i]?.icon || `ITEM${i + 1}`
+    })) || defaultDiffData;
+
     return (
         <section className="py-24 md:py-48 bg-[#FFDCD9]/20 relative overflow-hidden">
             {/* Background pattern */}
@@ -34,14 +33,14 @@ const WhyDifferent = () => {
             <Container>
                 <div className="space-y-24">
                     <AnimatedSection className="max-w-3xl">
-                        <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] mb-8">Why We&apos;re Different</h2>
+                        <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] mb-8">{sectionTitle}</h2>
                         <p className="text-4xl md:text-6xl font-black text-[#262424] leading-[1.1] tracking-tighter">
                             Bridging the gap between strategy and human adoption.
                         </p>
                     </AnimatedSection>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                        {diffData.map((item, i) => (
+                        {items.map((item: { title: string; desc: string; icon: string }, i: number) => (
                             <AnimatedSection key={i} delay={i * 0.1}>
                                 <GlassCard className="h-full group p-10 md:p-14 border-black/5 bg-white/60">
                                     <div className="flex flex-col h-full gap-12">

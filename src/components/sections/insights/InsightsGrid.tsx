@@ -1,16 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 import img1 from '@/assets/PromptAI_WebsiteImage-300x169.webp';
 import img2 from '@/assets/PromptAI_WebsiteImage2-300x169.webp';
 import img3 from '@/assets/PromptAI_WebsiteImage5-300x169.webp';
 import img4 from '@/assets/PromptAI_WebsiteImageGETREADYFORAI-300x169.webp';
 
-const articles = [
+const defaultArticles = [
     {
         category: "Strategy",
         title: "AI adoption strategies for enterprise organisations",
@@ -41,28 +44,49 @@ const articles = [
     }
 ];
 
+const images = [img1, img2, img3, img4];
+
 const InsightsGrid = () => {
+    const { getContent } = useContent();
+    const iv = getContent('insights') as any;
+    const intro = iv?.intro || {
+        title: "AI is evolving quickly and organisations need to stay informed about how these changes affect the future of work.",
+        subtitle: "In the Insights section we explore several key topics that shape the modern workplace:",
+        topics: [
+            "AI adoption trends and statistics",
+            "AI and human skills evolution",
+            "LLMs in modern organisations",
+            "AI-enabled productivity",
+            "Future of work research"
+        ]
+    };
+
+    const articlesData = iv?.articles as Array<{ id: string; title: string; excerpt?: string; category: string; date: string; readTime?: string }> | null;
+    
+    const articles = articlesData?.map((article, index) => ({
+        category: article.category,
+        title: article.title,
+        date: article.date,
+        readTime: article.readTime || "5 min read",
+        excerpt: article.excerpt,
+        image: images[index % images.length]
+    })) || defaultArticles;
+
     return (
         <section className="py-24 md:py-48 bg-white overflow-hidden">
             <Container>
                 <div className="space-y-16 max-w-4xl mb-24">
                     <AnimatedSection direction="right">
                         <p className="text-2xl md:text-3xl font-black text-[#262424] leading-tight">
-                            AI is evolving quickly and organisations need to stay informed about how these changes affect the future of work.
+                            {intro.title}
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                             <div className="space-y-4">
                                 <p className="text-lg text-[#262424]/70 font-medium leading-relaxed">
-                                    In the Insights section we explore several key topics that shape the modern workplace:
+                                    {intro.subtitle}
                                 </p>
                                 <ul className="space-y-3">
-                                    {[
-                                        "AI adoption trends and statistics",
-                                        "AI and human skills evolution",
-                                        "LLMs in modern organisations",
-                                        "AI-enabled productivity",
-                                        "Future of work research"
-                                    ].map((item, i) => (
+                                    {intro.topics.map((item: string, i: number) => (
                                         <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#262424]/80 uppercase tracking-tight">
                                             <div className="w-1.5 h-1.5 rounded-full bg-[#FF3500]" />
                                             {item}

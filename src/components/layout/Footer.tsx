@@ -1,7 +1,17 @@
+'use client';
+
 import React from 'react';
 import { Container } from '@/components/ui/Container';
+import { useContent } from '@/hooks/useContent';
 
 const Footer = () => {
+    const { getContent } = useContent();
+    const footer = getContent('contact')?.footer as { email?: string; phone?: string; address?: string; linkedin?: string; twitter?: string } | null;
+    
+    const email = footer?.email || "hello@promptai.com";
+    const phone = footer?.phone || "+1 (555) 123-4567";
+    const address = footer?.address || "123 Innovation Drive, Tech City, TC 12345";
+
     return (
         <footer className="bg-[#FFDCD9] py-10 md:py-12">
             <Container>
@@ -22,9 +32,17 @@ const Footer = () => {
                             Quick Links
                         </h4>
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                            {['Home', 'Services', 'Academy', 'Case Studies', 'Insights', 'About', 'Contact'].map((link) => (
-                                <a key={link} href="#" className="text-sm font-bold text-[#262424] hover:opacity-70 transition-opacity">
-                                    {link}
+                            {[
+                                { name: 'Home', href: '/' },
+                                { name: 'Services', href: '/services' },
+                                { name: 'Academy', href: '/academy' },
+                                { name: 'Case Studies', href: '/case-studies' },
+                                { name: 'Insights', href: '/insights' },
+                                { name: 'About', href: '/about' },
+                                { name: 'Contact', href: '/contact' }
+                            ].map((link) => (
+                                <a key={link.name} href={link.href} className="text-sm font-bold text-[#262424] hover:opacity-70 transition-opacity">
+                                    {link.name}
                                 </a>
                             ))}
                         </div>
@@ -38,16 +56,22 @@ const Footer = () => {
                         <div className="flex flex-col gap-4">
                             <div>
                                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#262424]/40 mb-1">Phone</p>
-                                <a href="tel:+442071673013" className="text-lg font-bold text-[#262424] hover:opacity-70 transition-opacity">
-                                    +44 2071673013
+                                <a href={`tel:${phone}`} className="text-lg font-bold text-[#262424] hover:opacity-70 transition-opacity">
+                                    {phone}
                                 </a>
                             </div>
                             <div>
                                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#262424]/40 mb-1">Email</p>
-                                <a href="mailto:hello@promptaiglobal.com" className="text-lg font-bold text-[#262424] hover:opacity-70 transition-opacity">
-                                    hello@promptaiglobal.com
+                                <a href={`mailto:${email}`} className="text-lg font-bold text-[#262424] hover:opacity-70 transition-opacity">
+                                    {email}
                                 </a>
                             </div>
+                            {address && (
+                                <div>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#262424]/40 mb-1">Address</p>
+                                    <p className="text-sm font-bold text-[#262424]">{address}</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

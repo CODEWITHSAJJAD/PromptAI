@@ -4,8 +4,27 @@ import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { useContent } from '@/hooks/useContent';
 
 const HomeContent = () => {
+    const { getContent } = useContent();
+    const adoptingAI = getContent('home')?.adoptingAI as { title?: string; subtitle?: string; description?: string } | null;
+    const buildingCapability = getContent('home')?.buildingCapability as { title?: string; subtitle?: string; description?: string; features?: { title: string; desc: string }[] } | null;
+
+    const adoptingTitle = adoptingAI?.title || "Adopting AI tools";
+    const adoptingSubtitle = adoptingAI?.subtitle || "PromptAI helps organisations introduce AI in a way that people can actually adopt.";
+    const adoptingDesc = adoptingAI?.description || "We work with leadership teams to understand their goals, design practical strategies for introducing AI into the workplace, and deliver training that helps teams build real confidence using AI tools.";
+
+    const buildingTitle = buildingCapability?.title || "Building Capability";
+    const buildingSubtitle = buildingCapability?.subtitle || "Our focus is not just technology. It’s helping people learn how to work effectively with AI.";
+    const buildingDesc = buildingCapability?.description || "Through workshops, scenario-based learning and structured adoption programmes, we help organisations move from AI curiosity to real capability.";
+    const features = buildingCapability?.features?.length ? buildingCapability.features : [
+        { title: "Governance", desc: "Safe AI usage." },
+        { title: "Security", desc: "Protecting data." },
+        { title: "Impact", desc: "Measurable ROI." },
+        { title: "Culture", desc: "Human-centric." }
+    ];
+
     return (
         <section className="py-24 md:py-48 bg-white space-y-32 md:space-y-64 overflow-hidden">
             <Container>
@@ -13,14 +32,19 @@ const HomeContent = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <AnimatedSection direction="right">
                         <div className="space-y-12">
-                            <h2 className="text-4xl md:text-7xl font-black text-[#262424] leading-[0.9] tracking-[-0.05em]">
-                                Adopting <br /> <span className="text-[#FF3500]">AI tools</span>
-                            </h2>
+                            <h2 
+                                className="text-4xl md:text-7xl font-black text-[#262424] leading-[0.9] tracking-[-0.05em] whitespace-pre-line"
+                                dangerouslySetInnerHTML={{
+                                    __html: adoptingTitle
+                                        .replace('AI tools', '<span class="text-[#FF3500]">AI tools</span>')
+                                        .replace(/\n/g, '<br/>')
+                                }}
+                            />
                             <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight">
-                                PromptAI helps organisations introduce AI in a way that people can actually adopt.
+                                {adoptingSubtitle}
                             </p>
                             <p className="text-lg text-[#262424]/70 font-medium leading-relaxed max-w-xl">
-                                We work with leadership teams to understand their goals, design practical strategies for introducing AI into the workplace, and deliver training that helps teams build real confidence using AI tools.
+                                {adoptingDesc}
                             </p>
                         </div>
                     </AnimatedSection>
@@ -38,22 +62,22 @@ const HomeContent = () => {
                 <div className="mt-32 md:mt-64 grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
                     <AnimatedSection direction="right" delay={0.2} className="lg:order-2">
                         <div className="space-y-12">
-                            <h2 className="text-4xl md:text-7xl font-black text-[#262424] leading-[0.9] tracking-tighter">
-                                Building <br /> <span className="text-[#FF3500]">Capability</span>
-                            </h2>
+                            <h2 
+                                className="text-4xl md:text-7xl font-black text-[#262424] leading-[0.9] tracking-tighter whitespace-pre-line"
+                                dangerouslySetInnerHTML={{
+                                    __html: buildingTitle
+                                        .replace('Capability', '<span class="text-[#FF3500]">Capability</span>')
+                                        .replace(/\n/g, '<br/>')
+                                }}
+                            />
                             <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight">
-                                Our focus is not just technology. It’s helping people learn how to work effectively with AI.
+                                {buildingSubtitle}
                             </p>
                             <p className="text-lg text-[#262424]/70 font-medium leading-relaxed max-w-xl">
-                                Through workshops, scenario-based learning and structured adoption programmes, we help organisations move from AI curiosity to real capability.
+                                {buildingDesc}
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {[
-                                    { title: "Governance", desc: "Safe AI usage." },
-                                    { title: "Security", desc: "Protecting data." },
-                                    { title: "Impact", desc: "Measurable ROI." },
-                                    { title: "Culture", desc: "Human-centric." }
-                                ].map((item, i) => (
+                                {features.map((item, i) => (
                                     <div key={i} className="space-y-2 border-l-2 border-[#FF3500] pl-4">
                                         <h4 className="text-xs font-black uppercase tracking-widest">{item.title}</h4>
                                         <p className="text-xs text-[#262424]/60 font-bold">{item.desc}</p>

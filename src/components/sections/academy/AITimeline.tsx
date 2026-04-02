@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React from 'react';
@@ -5,12 +7,13 @@ import { motion, useScroll } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { useRef } from 'react';
+import { useContent } from '@/hooks/useContent';
 
-const timelineData = [
-    { year: "1980s", event: "Computers enter offices", desc: "The first step towards digital workplaces." },
-    { year: "1997", event: "Email primary communication", desc: "Standardization of electronic messaging." },
-    { year: "2006", event: "Cloud computing norm", desc: "Data access becomes decentralized." },
-    { year: "2024", event: "AI revolution begins", desc: "Microsoft Copilot and Google Gemini transform operations." }
+const defaultTimelineData = [
+    { year: "1980s", title: "Computers enter offices", description: "The first step towards digital workplaces." },
+    { year: "1997", title: "Email primary communication", description: "Standardization of electronic messaging." },
+    { year: "2006", title: "Cloud computing norm", description: "Data access becomes decentralized." },
+    { year: "2024", title: "AI revolution begins", description: "Microsoft Copilot and Google Gemini transform operations." }
 ];
 
 const AITimeline = () => {
@@ -19,6 +22,12 @@ const AITimeline = () => {
         target: containerRef,
         offset: ["start center", "end center"]
     });
+    const { getContent } = useContent();
+    const timelineDataFromCMS = getContent('academy')?.timeline as any;
+    
+    const tagline = timelineDataFromCMS?.tagline || "The Evolution";
+    const title = timelineDataFromCMS?.title || "AI is Here";
+    const timelineData = timelineDataFromCMS?.items?.length ? timelineDataFromCMS.items : defaultTimelineData;
 
     return (
         <section ref={containerRef} className="py-24 md:py-48 bg-[#262424] text-white relative overflow-hidden">
@@ -28,8 +37,8 @@ const AITimeline = () => {
             <Container>
                 <div className="space-y-32">
                     <AnimatedSection className="text-center space-y-8">
-                        <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em]">The Evolution</h2>
-                        <h3 className="text-4xl md:text-8xl font-black tracking-tighter leading-none">AI is Here</h3>
+                        <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em]">{tagline}</h2>
+                        <h3 className="text-5xl md:text-8xl font-black tracking-tighter leading-none">{title}</h3>
                     </AnimatedSection>
 
                     <div className="relative max-w-4xl mx-auto px-4 md:px-0">
@@ -42,7 +51,7 @@ const AITimeline = () => {
                         </div>
 
                         <div className="space-y-32">
-                            {timelineData.map((item, i) => (
+                            {timelineData.map((item: any, i: number) => (
                                 <div key={i} className={`relative flex flex-col md:flex-row items-start md:items-center ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                     {/* Timeline Marker */}
                                     <motion.div
@@ -57,8 +66,8 @@ const AITimeline = () => {
                                         <AnimatedSection direction={i % 2 === 0 ? 'left' : 'right'}>
                                             <div className="space-y-4">
                                                 <div className="text-3xl md:text-6xl font-black text-[#FF3500] tracking-tighter leading-none">{item.year}</div>
-                                                <h4 className="text-xl md:text-2xl font-black tracking-tighter leading-none uppercase">{item.event}</h4>
-                                                <p className="text-white/60 font-medium leading-relaxed">{item.desc}</p>
+                                                <h4 className="text-xl md:text-2xl font-black tracking-tighter leading-none uppercase">{item.title}</h4>
+                                                <p className="text-white/60 font-medium leading-relaxed">{item.description}</p>
                                             </div>
                                         </AnimatedSection>
                                     </div>

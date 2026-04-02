@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React from 'react';
@@ -6,8 +8,33 @@ import { Container } from '@/components/ui/Container';
 import { GlowBackground } from '@/components/ui/GlowBackground';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { useContent } from '@/hooks/useContent';
 
 const ContactHero = () => {
+    const { getContent } = useContent();
+    const heroData = getContent('contact')?.hero as any;
+
+    const tagline = heroData?.tagline || "Get in Touch";
+    const title = heroData?.title || "Get in \n Touch.";
+    const subtitle = heroData?.subtitle || "Ready to start your AI adoption journey?";
+    const description1 = heroData?.description1 || "If you are interested in how AI can support your organisation, or if you would like to learn more about our training programmes and workshops, we would like to hear from you.";
+    const description2 = heroData?.description2 || "Contact us to discuss your goals and how we can help your team build practical AI capability.";
+    const phone = heroData?.phone || "+44 2071673013";
+    const email = heroData?.email || "hello@promptaiglobal.com";
+
+    // helper to render title with bold brand color if there is a dot or last word
+    const renderTitle = () => {
+        if (title.includes('\n')) {
+            const parts = title.split('\n');
+            return (
+                <>
+                    {parts[0]} <br /> <span className="text-[#FF3500]">{parts[1]}</span>
+                </>
+            );
+        }
+        return title;
+    };
+
     return (
         <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 bg-white overflow-hidden">
             <GlowBackground />
@@ -16,16 +43,16 @@ const ContactHero = () => {
                     <div className="space-y-16">
                         <div className="space-y-8">
                             <AnimatedSection direction="right">
-                                <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] mb-4 font-mono">Get in Touch</h2>
-                                <h1 className="text-5xl md:text-9xl font-black text-[#262424] leading-[0.85] tracking-tighter mb-8">
-                                    Get in <br /> <span className="text-[#FF3500]">Touch.</span>
+                                <h2 className="text-[#FF3500] text-sm font-black uppercase tracking-[0.3em] mb-4 font-mono">{tagline}</h2>
+                                <h1 className="text-5xl md:text-9xl font-black text-[#262424] leading-[0.85] tracking-tighter mb-8 whitespace-pre-line">
+                                    {renderTitle()}
                                 </h1>
                                 <p className="text-xl md:text-2xl font-bold text-[#262424] leading-tight max-w-xl mb-12">
-                                    Ready to start your AI adoption journey?
+                                    {subtitle}
                                 </p>
                                 <div className="space-y-6 text-lg text-[#262424]/70 font-medium leading-relaxed mb-12 max-w-xl">
-                                    <p>If you are interested in how AI can support your organisation, or if you would like to learn more about our training programmes and workshops, we would like to hear from you.</p>
-                                    <p>Contact us to discuss your goals and how we can help your team build practical AI capability.</p>
+                                    <p>{description1}</p>
+                                    <p>{description2}</p>
                                 </div>
                             </AnimatedSection>
 
@@ -62,14 +89,14 @@ const ContactHero = () => {
                             <AnimatedSection direction="right" delay={0.2}>
                                 <div className="space-y-6 group">
                                     <h3 className="text-xs font-black uppercase tracking-widest text-[#262424]/40">Phone</h3>
-                                    <a href="tel:+442071673013" className="text-2xl md:text-3xl font-black text-[#262424] tracking-tighter hover:text-[#FF3500] transition-colors leading-none">+44 2071673013</a>
+                                    <a href={`tel:${phone.replace(/\s+/g, '')}`} className="text-2xl md:text-3xl font-black text-[#262424] tracking-tighter hover:text-[#FF3500] transition-colors leading-none">{phone}</a>
                                     <div className="w-8 h-1 bg-[#FF3500] group-hover:w-full transition-all duration-500" />
                                 </div>
                             </AnimatedSection>
                             <AnimatedSection direction="right" delay={0.3}>
                                 <div className="space-y-6 group">
                                     <h3 className="text-xs font-black uppercase tracking-widest text-[#262424]/40">Email</h3>
-                                    <a href="mailto:hello@promptaiglobal.com" className="text-2xl md:text-3xl font-black text-[#262424] tracking-tighter hover:text-[#FF3500] transition-colors leading-none truncate block">hello@promptaiglobal.com</a>
+                                    <a href={`mailto:${email}`} className="text-2xl md:text-3xl font-black text-[#262424] tracking-tighter hover:text-[#FF3500] transition-colors leading-none truncate block">{email}</a>
                                     <div className="w-8 h-1 bg-[#FF3500] group-hover:w-full transition-all duration-500" />
                                 </div>
                             </AnimatedSection>

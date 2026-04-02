@@ -1,0 +1,383 @@
+{
+  "home": {
+    "hero": {
+      "tagline": "GET READY FOR AI",
+      "title": "Ready for AI?",
+      "subtitle": "We help organisations plan, introduce and adopt AI in practical ways."
+    },
+    "promise": {
+      "title": "Our Promise",
+      "content": "We combine deep technical expertise with business acumen to deliver AI solutions that drive real value. From strategy to implementation, we're your trusted partner in the AI journey."
+    },
+    "whyDifferent": {
+      "title": "Why We're Different",
+      "items": [
+        {
+          "title": "Strategic Approach",
+          "description": "We don't just build AI, we integrate it into your business strategy."
+        },
+        {
+          "title": "Practical Implementation",
+          "description": "Focus on tangible outcomes and measurable ROI."
+        },
+        {
+          "title": "Custom Solutions",
+          "description": "Every business is unique, our solutions are too."
+        }
+      ]
+    },
+    "clients": {
+      "title": "Trusted by Global Brands",
+      "logos": [
+        "WPP",
+        "Refinitiv",
+        "StellarUp",
+        "Howden",
+        "Admiral",
+        "Jaguar",
+        "Land Rover",
+        "Howdens"
+      ]
+    },
+    "credDeck": {
+      "title": "Get a Cred Deck",
+      "description": "Use our form to request a pitch deck and learn more about our team, our purpose and our AI adoption methodology."
+    },
+    "adoptingAI": {
+      "title": "Adopting AI tools",
+      "subtitle": "PromptAI helps organisations introduce AI in a way that people can actually adopt.",
+      "description": "We work with leadership teams to understand their goals, design practical strategies for introducing AI into the workplace, and deliver training that helps teams build real confidence using AI tools."
+    },
+    "buildingCapability": {
+      "title": "Building Capability",
+      "subtitle": "Our focus is not just technology. It’s helping people learn how to work effectively with AI.",
+      "description": "Through workshops, scenario-based learning and structured adoption programmes, we help organisations move from AI curiosity to real capability.",
+      "features": [
+        {
+          "title": "Governance",
+          "desc": "Safe AI usage."
+        },
+        {
+          "title": "Security",
+          "desc": "Protecting data."
+        },
+        {
+          "title": "Impact",
+          "desc": "Measurable ROI."
+        },
+        {
+          "title": "Culture",
+          "desc": "Human-centric."
+        }
+      ]
+    },
+    "servicesPreview": {
+      "title": "Our Services"
+    },
+    "pillars": {
+      "missionQuote": "We're on a mission to empower people to be on the right side of AI one prompt at a time.",
+      "approachTitle": "Our Approach",
+      "approachHeading": "Long-term relationships built on human trust.",
+      "approachDesc": "PromptAI builds deep partnerships to support organisations throughout their AI adoption journey.",
+      "whyTitle": "Our Why",
+      "whyHeading": "Productive and fulfilling workplaces.",
+      "whyDesc": "AI can help create environments where people focus on what matters most."
+    },
+    "getInTouch": {
+      "title": "Get in Touch",
+      "subtitle": "Ready to start your AI journey? Our team is here to help."
+    }
+  },
+  "services": {
+    "hero": {
+      "tagline": "Our Capability",
+      "title": "What We Do",
+      "subtitle": "Helping organisations plan, introduce and adopt AI in practical ways."
+    },
+    "detailCards": {
+      "items": [
+        {
+          "title": "AI Strategy & Consulting",
+          "description": "Comprehensive AI roadmap tailored to your business needs",
+          "icon": "brain"
+        },
+        {
+          "title": "Implementation Services",
+          "description": "End-to-end development and deployment of AI solutions",
+          "icon": "code"
+        },
+        {
+          "title": "Training & Enablement",
+          "description": "Hands-on workshops to upskill your team",
+          "icon": "graduation"
+        }
+      ]
+    },
+    "adoptionDeepDive": {
+      "journeyTitle": "Our Journey",
+      "journeyContent": "Introducing AI into an organisation requires more than just tools. It requires strategy, change management and training.",
+      "title": "AI Transformation",
+      "content": "PromptAI supports organisations across the full AI adoption journey — from early exploration through to workforce training and long-term adoption. Our services include strategy development, adoption planning and hands-on training designed to help teams build real capability.",
+      "features": [
+        "Habit Stacking",
+        "Digital Dexterity",
+        "Frictionless UI",
+        "Psychological Safety"
+      ],
+      "trainingTitle": "End User Training",
+      "trainingSubtitle": "Helping teams learn how to use AI in their daily work.",
+      "trainingContent": "Our training sessions focus on helping people understand what AI can do and how to use it responsibly. Through practical exercises, participants learn how to use AI tools for research, writing, and analysis.",
+      "workshopTitle": "Workshops",
+      "workshopSubtitle": "Hands-on Execution"
+    },
+    "founders": {
+      "title": "Our Team",
+      "members": [
+        {
+          "name": "Taryn Nixon",
+          "role": "Co-Founder & CEO",
+          "bio": "Leading AI strategist with 15+ years in technology transformation"
+        },
+        {
+          "name": "Babak Daemi",
+          "role": "Co-Founder & CTO",
+          "bio": "Technical visionary specializing in machine learning and AI architecture"
+        }
+      ]
+    }
+  },
+  "caseStudies": {
+    "hero": {
+      "tagline": "Success Stories",
+      "title": "Case Studies",
+      "subtitle": "Real results from real clients. See how we've helped organizations transform with AI."
+    },
+    "studies": [
+      {
+        "id": "1",
+        "client": "WPP",
+        "challenge": "Scaling AI tools across a fragmented global creative network.",
+        "solution": "Bespoke AI adoption framework focused on creative workflows and tool governance.",
+        "results": "30% increase in productivity for creative operations teams.",
+        "tags": [
+          "Advertising"
+        ]
+      },
+      {
+        "id": "2",
+        "client": "Refinitiv",
+        "challenge": "Integrating generative AI into data-heavy analytical environments.",
+        "solution": "PROSCI-led change management strategy to shift analyst mindsets.",
+        "results": "Successful rollout to over 5,000 analysts with 85% adoption rate.",
+        "tags": [
+          "Data",
+          "Analytics"
+        ]
+      },
+      {
+        "id": "3",
+        "client": "StellarUp",
+        "challenge": "Developing a roadmap for AI-driven mentorship matching.",
+        "solution": "Behavioural science audit to optimize AI-human interactions in the platform.",
+        "results": "Improved matching accuracy and user engagement by 40%.",
+        "tags": [
+          "Mentorship"
+        ]
+      },
+      {
+        "id": "1774960476919",
+        "client": "New Client",
+        "title": "New Case Study",
+        "challenge": "The challenge faced...",
+        "solution": "The solution implemented...",
+        "results": "Key results achieved...",
+        "tags": [
+          "AI",
+          "Technology"
+        ]
+      }
+    ],
+    "intro": {
+      "title": "Every organisation approaches AI differently. In this section we share examples of our work with organisations exploring AI adoption.",
+      "description": "These case studies highlight the challenges organisations face, the approaches used to introduce AI and the lessons learned along the way. They demonstrate how organisations move from experimentation to practical use across teams."
+    }
+  },
+  "academy": {
+    "hero": {
+      "tagline": "Learn AI",
+      "title": "AI Academy",
+      "subtitle": "Comprehensive training programs to empower your team with AI knowledge and skills."
+    },
+    "stats": {
+      "title": "By The Numbers",
+      "items": [
+        {
+          "value": "500+",
+          "label": "Professionals Trained"
+        },
+        {
+          "value": "50+",
+          "label": "Organizations"
+        },
+        {
+          "value": "95%",
+          "label": "Satisfaction Rate"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Workshop Benefits",
+      "items": [
+        {
+          "title": "Hands-on Learning",
+          "description": "Practical exercises and real-world case studies"
+        },
+        {
+          "title": "Expert Instructors",
+          "description": "Learn from industry practitioners with years of experience"
+        },
+        {
+          "title": "Flexible Formats",
+          "description": "In-person, virtual, and hybrid options available"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "AI Journey",
+      "items": [
+        {
+          "year": "Week 1-2",
+          "title": "Foundation",
+          "description": "Understanding AI fundamentals and business applications"
+        },
+        {
+          "year": "Week 3-4",
+          "title": "Implementation",
+          "description": "Hands-on building and deploying AI solutions"
+        },
+        {
+          "year": "Week 5-6",
+          "title": "Optimization",
+          "description": "Refining and scaling AI initiatives"
+        }
+      ]
+    }
+  },
+  "about": {
+    "hero": {
+      "tagline": "About Us",
+      "title": "We're on a mission to make AI accessible",
+      "subtitle": "Founded by industry veterans, we believe every organization can benefit from AI."
+    },
+    "promise": {
+      "title": "Our Promise",
+      "content": "We combine deep technical expertise with business acumen to deliver AI solutions that drive real value."
+    },
+    "theDifference": {
+      "title": "The Difference",
+      "items": [
+        "Extension of CSR",
+        "Behavioural science approach",
+        "Experienced change managers"
+      ]
+    },
+    "ourPhilosophy": {
+      "title": "Our Philosophy",
+      "heading": "Grounding AI in Humanity.",
+      "content": "PromptAI was started with a simple belief: the organisations that succeed with AI will be the ones that prioritise people. We focus on the human side of AI adoption, grounded in behavioural science and change management principles."
+    },
+    "ourWhy": {
+      "title": "Our Why",
+      "content": "AI can help create workplaces that are both productive and fulfilling."
+    },
+    "globalPartnership": {
+      "tagline": "Global Partnership",
+      "title": "Microsoft AI Cloud Partner",
+      "description": "PromptAI is a member of the Microsoft AI Cloud Partner Programme, driving enterprise-ready AI solutions."
+    },
+    "founders": {
+      "title": "Meet Our Team",
+      "members": [
+        {
+          "name": "Taryn Nixon",
+          "role": "Co-Founder & CEO",
+          "bio": "Leading AI strategist with 15+ years in technology transformation"
+        },
+        {
+          "name": "Babak Daemi",
+          "role": "Co-Founder & CTO",
+          "bio": "Technical visionary specializing in machine learning and AI architecture"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "hero": {
+      "tagline": "Get In Touch",
+      "title": "Let's Talk AI",
+      "subtitle": "Ready to transform your business? We'd love to hear from you.",
+      "email": "hello@promptai.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Innovation Drive, Tech City, TC 12345",
+      "description1": "If you are interested in how AI can support your organisation, or if you would like to learn more about our training programmes and workshops, we would like to hear from you.",
+      "description2": "Contact us to discuss your goals and how we can help your team build practical AI capability.\n"
+    },
+    "footer": {
+      "email": "hello@promptai.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Innovation Drive, Tech City, TC 12345",
+    }
+  },
+  "insights": {
+    "hero": {
+      "tagline": "Latest Insights",
+      "title": "AI Insights",
+      "subtitle": "Stay updated with the latest trends and developments in artificial intelligence."
+    },
+    "articles": [
+      {
+        "id": "1",
+        "category": "Strategy",
+        "title": "AI adoption strategies for enterprise organisations",
+        "date": "March 2024",
+        "readTime": "5 min read",
+        "excerpt": "A comprehensive guide to scaling AI across large teams."
+      },
+      {
+        "id": "2",
+        "category": "Science",
+        "title": "Behavioural science and the human side of technology",
+        "date": "Feb 2024",
+        "readTime": "8 min read",
+        "excerpt": "Why psychology matters more than technology in AI adoption."
+      },
+      {
+        "id": "3",
+        "category": "Future",
+        "title": "The future of workplace AI: Beyond the hype",
+        "date": "Jan 2024",
+        "readTime": "6 min read",
+        "excerpt": "Practical applications of AI in modern business."
+      },
+      {
+        "id": "4",
+        "category": "Governance",
+        "title": "AI governance for organisations: A structured approach",
+        "date": "Dec 2023",
+        "readTime": "10 min read",
+        "excerpt": "How to implement safe and effective AI policies."
+      }
+    ],
+    "intro": {
+      "title": "AI is evolving quickly and organisations need to stay informed about how these changes affect the future of work.",
+      "subtitle": "In the Insights section we explore several key topics that shape the modern workplace:",
+      "topics": [
+        "AI adoption trends and statistics",
+        "AI and human skills evolution",
+        "LLMs in modern organisations",
+        "AI-enabled productivity",
+        "Future of work research"
+      ]
+    }
+  }
+}
