@@ -10,7 +10,7 @@ interface PageProps {
 }
 
 export default async function DynamicPage({ params }: PageProps) {
-  if (!isSanityConfigured) {
+  if (!isSanityConfigured || !client) {
     notFound()
   }
   const page = await client.fetch(PAGE_QUERY, { slug: params.slug })

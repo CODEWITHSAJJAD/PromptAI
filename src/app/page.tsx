@@ -3,7 +3,7 @@ import { PAGE_QUERY } from '@/sanity/lib/queries'
 import SectionRenderer from '@/components/SectionRenderer'
 
 export default async function Home() {
-  if (!isSanityConfigured) return <DefaultHome />;
+  if (!isSanityConfigured || !client) return <DefaultHome />;
   const page = await client.fetch(PAGE_QUERY, { slug: 'home' })
 
   if (!page) {

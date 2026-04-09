@@ -9,7 +9,7 @@ import { NAVBAR_QUERY } from "@/sanity/lib/queries";
 import { AdminProvider } from "@/app/admin/context/AdminContext";
 
 async function getNavbar() {
-  if (!isSanityConfigured) return [];
+  if (!isSanityConfigured || !client) return [];
   try {
     const data = await client.fetch(NAVBAR_QUERY);
     return data?.items?.map((item: { label: string; href: string }) => ({
