@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase, getContent, saveContent } from '@/lib/supabase';
+import { getContent, saveContent } from '@/lib/supabase';
 
 const COOKIE_NAME = 'admin_session';
 
