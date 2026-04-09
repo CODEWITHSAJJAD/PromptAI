@@ -1,24 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const defaultPassword = process.env.ADMIN_PASSWORD || 'promptai2024';
-const ADMIN_FILE_PATH = path.join(process.cwd(), 'data', 'admin.json');
-
-const getAdminPassword = () => {
-  try {
-    if (fs.existsSync(ADMIN_FILE_PATH)) {
-      const data = fs.readFileSync(ADMIN_FILE_PATH, 'utf-8');
-      const json = JSON.parse(data);
-      return json.password || defaultPassword;
-    }
-  } catch (error) {
-    console.error('Error reading admin credentials:', error);
-  }
-  return defaultPassword;
-};
+import { supabase } from '@/lib/supabase';
 
 const COOKIE_NAME = 'admin_session';
+const ADMIN_TABLE = 'admin_config';
+const DEFAULT_PASSWORD = 'abc@1234';
+
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const MAX_ATTEMPTS = 5;
 
@@ -47,6 +33,21 @@ function getClientIP(request: NextRequest): string {
          'unknown';
 }
 
+async function getAdminPassword(): Promise<string> {
+  const { data, error } = await supabase
+    .from(ADMIN_TABLE)
+    .select('password')
+    .eq('id', 'admin')
+    .single();
+
+  if (error || !data) {
+    await supabase.from(ADMIN_TABLE).insert({ id: 'admin', password: DEFAULT_PASSWORD });
+    return DEFAULT_PASSWORD;
+  }
+
+  return data.password;
+}
+
 export async function POST(request: NextRequest) {
   const ip = getClientIP(request);
   
@@ -62,11 +63,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
     }
 
-    if (password === getAdminPassword()) {
+    const storedPassword = await getAdminPassword();
+    
+    if (password === storedPassword) {
       const response = NextResponse.json({ success: true });
       response.cookies.set(COOKIE_NAME, 'authenticated', {
         httpOnly: true,
-        secure: false,
+        secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
         maxAge: 60 * 60 * 24,
         path: '/',
@@ -106,20 +109,16 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
     }
 
-    if (currentPassword !== getAdminPassword()) {
+    const storedPassword = await getAdminPassword();
+    
+    if (currentPassword !== storedPassword) {
       return NextResponse.json({ error: 'Incorrect current password' }, { status: 401 });
     }
 
-    // Save new password
-    let adminData = { password: newPassword };
-    try {
-      if (fs.existsSync(ADMIN_FILE_PATH)) {
-        const data = fs.readFileSync(ADMIN_FILE_PATH, 'utf-8');
-        adminData = { ...JSON.parse(data), password: newPassword };
-      }
-    } catch {}
+    await supabase
+      .from(ADMIN_TABLE)
+      .upsert({ id: 'admin', password: newPassword }, { onConflict: 'id' });
 
-    fs.writeFileSync(ADMIN_FILE_PATH, JSON.stringify(adminData, null, 2));
     return NextResponse.json({ success: true });
     
   } catch {
